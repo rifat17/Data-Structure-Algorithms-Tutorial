@@ -10,7 +10,8 @@ int adj[SIZE][SIZE];
 int colour[SIZE];
 int parent[SIZE];
 int dis[SIZE];
-//int time = 0;
+int fin[SIZE];
+int time = 0;
 
 void dfs(int vertex);
 void dfsVisit(int u , int vertex);
@@ -50,7 +51,7 @@ void dfs(int vertex)
 {
     for(int i = 0 ; i < vertex ; i++)
         colour[i] = WHITE;
-    //time = 0;
+    time = 0;
     cout << "DFS is ";
     for(int i = 0 ; i<vertex ; i++)
     {
@@ -64,7 +65,7 @@ void dfs(int vertex)
 void dfsVisit(int u , int vertex)
 {
     colour[u] = GRAY;
-    //dis[u] = time+1;
+    dis[u] = time++;
     for(int i = 0 ; i<vertex ; i++)
     {
         if(adj[u][i] == 1)
@@ -78,6 +79,7 @@ void dfsVisit(int u , int vertex)
         }
     }
     colour[u] = BLACK;
+    fin[u] = time++;
     cout << u << " ";
 
 }
